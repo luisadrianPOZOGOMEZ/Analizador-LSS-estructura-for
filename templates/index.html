@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Analizador Léxico, Sintáctico y Semántico</title>
+    <style>
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: #f5f5dc;
+        color: #000080;
+        margin: 0;
+        padding: 0;
+      }
+      h1, h2 {
+        text-align: center;
+        color: #ff00ff;
+        background-color: #ffffe0;
+        padding: 10px;
+        border: 2px solid #000080;
+        margin: 10px auto;
+        width: 80%;
+      }
+      div {
+        margin: 20px auto;
+        width: 80%;
+        background-color: #fffacd;
+        border: 2px solid #000080;
+        padding: 20px;
+      }
+      textarea {
+        width: 90%;
+        margin: 10px auto;
+        display: block;
+        background-color: #ffffe0;
+        color: #000080;
+        border: 2px solid #000080;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      input[type="submit"] {
+        display: block;
+        margin: 10px auto;
+        background-color: #ff00ff;
+        color: #ffffff;
+        border: 2px solid #000080;
+        padding: 10px 20px;
+        font-family: 'Courier New', Courier, monospace;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #800080;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background-color: #ffffe0;
+      }
+      th, td {
+        border: 2px solid #000080;
+        padding: 8px;
+        text-align: center;
+      }
+      th {
+        background-color: #ff00ff;
+        color: #ffffff;
+      }
+      pre {
+        background-color: #ffffe0;
+        border: 2px solid #000080;
+        padding: 10px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Analizador Léxico, Sintáctico y Semántico</h1>
+      <form method="post">
+        <textarea name="code" rows="10" cols="50">{{ code }}</textarea><br>
+        <input type="submit" value="Analizar">
+      </form>
+    </div>
+    <div>
+      <h2>Analizador Léxico</h2>
+      <table>
+        <tr>
+          <th>PR</th><th>ID</th><th>NUM</th><th>SYM</th><th>ERR</th>
+        </tr>
+        {% for row in lexical %}
+        <tr>
+          <td>{{ row[0] }}</td><td>{{ row[1] }}</td><td>{{ row[2] }}</td><td>{{ row[3] }}</td><td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+          <td>{{ total['PR'] }}</td><td>{{ total['ID'] }}</td><td>{{ total['NUM'] }}</td><td>{{ total['SYM'] }}</td><td>{{ total['ERR'] }}</td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <h2>Analizador Sintáctico y Semántico</h2>
+      <pre>{{ syntactic }}</pre>
+    </div>
+  </body>
+</html>
